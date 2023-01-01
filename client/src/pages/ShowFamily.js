@@ -61,7 +61,7 @@ const ShowFamily = () => {
   };
 
   return (
-    <section className="overflow-x-auto">
+    <section className="w-full">
       <div>
         <Link className="bg-blue-500 hover:bg-blue-600 px-3 py-2 text-white" to="/"> Back </Link>
       </div>
