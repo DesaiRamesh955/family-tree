@@ -57,6 +57,9 @@ const AddMember = ({ parentId, setIsOpen }) => {
 
   return (
     <div>
+      <div className="flex justify-end">
+        <span className="bg-red-500 hover:bg-red-600 cursor-pointer text-white  font-bold px-3 rounded-sm" onClick={()=>setIsOpen(false)}>X</span>
+      </div>
       <Form onSubmit={handleSubmit} encType="multipart/form-data">
         <Controls.Input
           type="text"
