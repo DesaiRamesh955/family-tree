@@ -2,6 +2,7 @@ import Controls from "../controls";
 import {SaveData}  from "../config/SaveData";
 import { useForm } from "../utils/useForm";
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 
 const AddFamily = () => {
   const form = useRef()
@@ -58,54 +59,62 @@ const AddFamily = () => {
     }
   };
   return (
-    <div className="p-3 bg-gray-600 w-1/3 mx-auto rounded">
-      <form onSubmit={handleSubmit} encType="multipart/form-data" ref={form}>
-        <Controls.Input
-          type="text"
-          name="familyName"
-          placeholder="Enter family name"
-          value={input.familyName}
-          onChange={handleInput}
-          error={error.familyName}
-          label="Family Name"
-        />
+    <section>
+      <div>
+        <Link className="bg-blue-500 hover:bg-blue-600 px-3 py-2 text-white" to="/"> Home </Link>
+      </div>
 
-        <Controls.Input
-          type="text"
-          name="person"
-          placeholder="Enter person name"
-          value={input.person}
-          onChange={handleInput}
-          error={error.person}
-          label="Person Name"
-        />
+<div className="p-3 bg-gray-600 w-1/3 mx-auto rounded">
+<form onSubmit={handleSubmit} encType="multipart/form-data" ref={form}>
+  <Controls.Input
+    type="text"
+    name="familyName"
+    placeholder="Enter family name"
+    value={input.familyName}
+    onChange={handleInput}
+    error={error.familyName}
+    label="Family Name"
+  />
 
-        <Controls.Input
-          type="file"
-          name="profile"
-          onChange={handleInput}
-          error={error.profile}
-          label="Profile"
-        />
+  <Controls.Input
+    type="text"
+    name="person"
+    placeholder="Enter person name"
+    value={input.person}
+    onChange={handleInput}
+    error={error.person}
+    label="Person Name"
+  />
 
-        <div className="flex gap-4">
-          <Controls.Radio
-            name="gender"
-            value="male"
-            onChange={handleInput}
-            error={error.gender}
-            label="Male"
-          />
-          <Controls.Radio
-            name="gender"
-            value="female"
-            onChange={handleInput}
-            label="Female"
-          />
-        </div>
-        <Controls.Input value="Submit" type="submit" />
-      </form>
-    </div>
+  <Controls.Input
+    type="file"
+    name="profile"
+    onChange={handleInput}
+    error={error.profile}
+    label="Profile"
+  />
+
+  <div className="flex gap-4">
+    <Controls.Radio
+      name="gender"
+      value="male"
+      onChange={handleInput}
+      error={error.gender}
+      label="Male"
+    />
+    <Controls.Radio
+      name="gender"
+      value="female"
+      onChange={handleInput}
+      label="Female"
+    />
+  </div>
+  <Controls.Input value="Submit" type="submit" />
+</form>
+</div>
+
+    </section>
+    
   );
 };
 
