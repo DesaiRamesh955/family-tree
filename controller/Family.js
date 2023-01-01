@@ -33,7 +33,6 @@ function refatorFamilyData(data, parentId = null) {
   } else {
     family = data.filter((familyMember) => familyMember.parentId == parentId);
   }
-  single=null
   for (let fam of family) {
     familyData.push({
       _id: fam._id,
