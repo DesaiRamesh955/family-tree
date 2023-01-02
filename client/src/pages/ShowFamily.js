@@ -1,7 +1,7 @@
 import { useLayoutEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { AddMember, Modal,Spinner } from "../components";
-import axios from "../config/API";
+import axios,{SERVER_BASE_URL} from "../config/API";
 
 import "../css/familyTree.css";
 
@@ -13,10 +13,10 @@ const ShowFamily = () => {
   const [loading, setloading] = useState(true);
 
   useLayoutEffect(() => {
-    let isApiSubscribed = true;
+    let isSubscribed = true;
 
     const fetchData = async () => {
-      if (isApiSubscribed) {
+      if (isSubscribed) {
         try {
           const res = await axios.get(`family/fetch/${ID}`);
           setFamily(res.data);
@@ -29,8 +29,7 @@ const ShowFamily = () => {
     fetchData();
 
     return () => {
-      // cancel the subscription
-      isApiSubscribed = false;
+      isSubscribed = false;
     };
   }, [ID, isOpen]);
 
@@ -48,7 +47,7 @@ const ShowFamily = () => {
           <a onClick={() => handleClick(member._id)} className="cursor-pointer">
             <img
               className="w-10 h-15"
-              src={`http://localhost:5000/public/assets/images/${member.image}`}
+              src={`${SERVER_BASE_URL}/public/assets/images/${member.image}`}
             />
             <span>{member.person}</span>
           </a>

@@ -5,4 +5,6 @@ const client = axios.create({
 
 export default client;
 
+export const SERVER_BASE_URL = "http://localhost:5000"
+
 
