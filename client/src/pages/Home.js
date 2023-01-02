@@ -1,32 +1,34 @@
 import React, { useLayoutEffect, useState } from "react";
-import {Card} from "../components";
+import {Card,Spinner} from "../components";
 import axios from "../config/API";
 const Home = () => {
   const [fam, setFam] = useState([]);
+  const [loading, setloading] = useState(true);
 
   useLayoutEffect(() => {
-    let isApiSubscribed = true;
+    let isSubscribed = true;
 
     const fetchData = async () => {
-      if (isApiSubscribed) {
+      if (isSubscribed) {
         try {
           const res = await axios.get("family/singlefetch");
 
           setFam((prev) => res.data);
+          
         } catch (err) {
           console.log(err);
         }
       }
+      setloading(false)
     };
     fetchData();
 
     return () => {
-      // cancel the subscription
-      isApiSubscribed = false;
+      isSubscribed = false;
     };
   }, []);
 
-  return (
+  return loading ?<Spinner />: (
     
     <div className="flex gap-6 flex-wrap">
        

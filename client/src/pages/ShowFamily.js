@@ -1,6 +1,6 @@
 import { useLayoutEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { AddMember, Modal } from "../components";
+import { AddMember, Modal,Spinner } from "../components";
 import axios from "../config/API";
 
 import "../css/familyTree.css";
@@ -10,6 +10,7 @@ const ShowFamily = () => {
   const [family, setFamily] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [parentId, setparentId] = useState(false);
+  const [loading, setloading] = useState(true);
 
   useLayoutEffect(() => {
     let isApiSubscribed = true;
@@ -19,6 +20,7 @@ const ShowFamily = () => {
         try {
           const res = await axios.get(`family/fetch/${ID}`);
           setFamily(res.data);
+          setloading(false)
         } catch (err) {
           console.log(err);
         }
@@ -60,7 +62,8 @@ const ShowFamily = () => {
     return _family;
   };
 
-  return (
+
+  return loading ?  <Spinner />: (
     <section className="w-full">
       <div>
         <Link className="bg-blue-500 hover:bg-blue-600 px-3 py-2 text-white" to="/"> Back </Link>

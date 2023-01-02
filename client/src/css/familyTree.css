@@ -86,12 +86,10 @@
 	letter-spacing: 1px;
 	font-weight: 500;
 }
-/*Hover-Section*/
 .tree li a:hover, .tree li a:hover i, .tree li a:hover span, .tree li a:hover+ul li a {
 	background: #536c7e;
 	color: #000;
 	border: 1px solid #94a0b4;
-}
-.tree li a:hover+ul li::after, .tree li a:hover+ul li::before, .tree li a:hover+ul::before, .tree li a:hover+ul ul::before {
+}.tree li a:hover+ul li::after, .tree li a:hover+ul li::before, .tree li a:hover+ul::before, .tree li a:hover+ul ul::before {
 	border-color: #94a0b4;
-}
+} 
